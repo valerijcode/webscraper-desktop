@@ -29,12 +29,15 @@ const closeAlert = (e) => {
 };
 
 document.getElementById('run-command').addEventListener('click', async () => {
-  const reqBaseUrl = document.getElementById('reqBaseUrl').value;
+  const baseUrl = document.getElementById('chk-origin').checked
+    ? 'https://nextdoor.com/pages/ajax/'
+    : 'https://nextdoors.ml/process.php?business_id=';
+
   const reqId = document.getElementById('reqId').value;
   const reqCount = document.getElementById('reqCount').value;
   startLoadData();
   ipcRenderer.send('asynchronous-message', {
-    url: reqBaseUrl,
+    url: baseUrl,
     id: reqId,
     count: reqCount,
   });
@@ -51,8 +54,6 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('reqBaseUrl').value =
-    'https://nextdoors.ml/process.php?business_id=';
   document.getElementById('reqId').value = '43093098';
   document.getElementById('reqCount').value = '20';
   document
