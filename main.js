@@ -47,6 +47,16 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+const getAppPath = () => {
+  const path = __dirname;
+  switch (process.platform) {
+    case 'darwin': {
+      return path + '../../../';
+    }
+    default:
+      return path;
+  }
+};
 
 ipcMain.on('asynchronous-message', async (event, arg) => {
   const { url, id: start_id, count } = arg;
@@ -56,7 +66,8 @@ ipcMain.on('asynchronous-message', async (event, arg) => {
 
   const valid_count = result.reduce((prev, item) => {
     if (item.status == 'success') {
-      writeCSV(app.getAppPath(), item.data);
+      const _path = getAppPath();
+      writeCSV(_path, item.data);
       return prev + 1;
     }
     return prev;
