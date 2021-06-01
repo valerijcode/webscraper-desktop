@@ -51,7 +51,7 @@ const getAppPath = () => {
   const path = __dirname;
   switch (process.platform) {
     case 'darwin': {
-      return path + '../../';
+      return path + '../../../';
     }
     default:
       return path;
