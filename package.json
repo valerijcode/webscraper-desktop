@@ -1,12 +1,12 @@
 {
-  "name": "electron-quick-start",
+  "name": "web-scrappy-app",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "make": "electron-packager . web-scrappy-app --platform=win32 --arch=x64"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "csv-write-stream": "^2.0.0"
+    "csv-write-stream": "^2.0.0",
+    "electron-packager": "^15.2.0"
   }
 }
