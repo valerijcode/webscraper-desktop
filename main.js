@@ -56,7 +56,7 @@ ipcMain.on('asynchronous-message', async (event, arg) => {
 
   const valid_count = result.reduce((prev, item) => {
     if (item.status == 'success') {
-      writeCSV(item.data);
+      writeCSV(app.getAppPath(), item.data);
       return prev + 1;
     }
     return prev;
