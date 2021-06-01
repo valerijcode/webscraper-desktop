@@ -51,7 +51,12 @@ const getAppPath = () => {
   const path = __dirname;
   switch (process.platform) {
     case 'darwin': {
-      return path + '../../../';
+      const paths = path.split('/Contents/Resources');
+      if (paths.length > 1) {
+        const pos = paths[0];
+        return pos.substr(0, pos.lastIndexOf('/'));
+      }
+      return paths[0];
     }
     default:
       return path;
@@ -67,6 +72,7 @@ ipcMain.on('asynchronous-message', async (event, arg) => {
   const valid_count = result.reduce((prev, item) => {
     if (item.status == 'success') {
       const _path = getAppPath();
+      console.log(_path);
       writeCSV(_path, item.data);
       return prev + 1;
     }

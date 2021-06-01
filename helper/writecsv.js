@@ -13,6 +13,7 @@ const writeCsv = (parentPath, obj) => {
   } else {
     writer = csvWriter({ sendHeaders: false });
   }
+  console.log(filePath)
 
   writer.pipe(fs.createWriteStream(filePath, { flags: 'a' }));
 
