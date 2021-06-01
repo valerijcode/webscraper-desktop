@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "make": "electron-packager . web-scrappy-app --platform=win32 --arch=x64"
+    "make-mac": "electron-packager . web-scrappy-app --platform=mac --arch=x64",
+    "make-win": "electron-packager . web-scrappy-app --platform=win32 --arch=x64"
   },
   "keywords": [
     "Electron",
