@@ -1,8 +1,9 @@
 const fs = require('fs');
+const path = require('path');
 const csvWriter = require('csv-write-stream');
 
-const writeCsv = (path, obj) => {
-  const filePath = fs.join(path, './output.csv');
+const writeCsv = (parentPath, obj) => {
+  const filePath = path.join(parentPath, './output.csv');
   const headers = Object.keys(obj);
 
   let writer = csvWriter();
